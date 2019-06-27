@@ -1,4 +1,4 @@
-# Intro to Coding course. Summer 2019  
+# Intro to Coding Course - Summer 2019  
  
 
 **Introduction to Coding**
