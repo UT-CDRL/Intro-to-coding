@@ -12,8 +12,8 @@ Download Packages
 
 Packages cheat-sheets  
 
-- dplyr: [Link](https://kalganem.github.io/Intro-to-coding/dplyr-cheat-sheet.pdf)  
-- base: [Link](https://kalganem.github.io/Intro-to-coding/r-cheat-sheet.pdf)  
+- dplyr: [Link](https://ut-cdrl.github.io/Intro-to-coding/dplyr-cheat-sheet.pdf)  
+- base: [Link](https://ut-cdrl.github.io/Intro-to-coding/r-cheat-sheet.pdf)  
 
 Online Tools
 
