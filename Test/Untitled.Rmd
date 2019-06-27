@@ -1,12 +1,18 @@
 ---
 title: "R Notebook"
+keep_tex: yes
 output:
-  rmarkdown::github_document
+  html_document:
+    df_print: paged
+  rmarkdown: default
+always_allow_html: yes
 ---
 
 ```{r include=FALSE}
 library(tidyverse)
 library(lubridate)
+library(rmarkdown)
+library(DT)
 theme_set(theme_bw())
 ```
 
@@ -21,9 +27,9 @@ d <- read.csv("/Users/khaled/Desktop/Programming/Teaching/Datasets/scrubbed.csv"
 
 ```{r}
 d %>% count(state, sort = T)
-d %>% count(shape, sort = T) 
+d %>% count(shape, sort = T)
 d %>% separate(datetime, c("Date", "Time"), sep = " ") -> d
-d %>% count(Date, sort = T)
+d %>% count(Date, sort = T) 
 d %>% mutate(Date = mdy(Date)) %>% mutate_at(vars(Date), funs(year, month, day)) -> d
 d %>% mutate(
     season = case_when(
@@ -39,7 +45,7 @@ d %>% group_by(month) %>% mutate(n = n()) %>% select(month, n , season) %>% dist
 d %>% ggplot(aes(day)) + geom_density() + facet_wrap(~month)
 d %>% count(month) %>% ggplot(aes(month, n)) + geom_point() + geom_smooth() +
   scale_x_continuous(breaks = 1:12)
-d %>% count(month, sort = T)
+d %>% count(month, sort = T) 
 d %>% mutate_at(vars(latitude, duration..seconds.), as.numeric) -> d
 
 # d %>% filter(year == 2012) %>% count(Date) %>% filter(Date == "2012-07-04") -> nn
@@ -55,7 +61,7 @@ d2 %>% ggplot(aes(Date, n)) + geom_line() +
 d  %>% filter(!state %in% c("ak", "hi", "pr")) %>%
   ggplot(aes(longitude, latitude)) +
   geom_point(alpha = 0.1) +
-  coord_map() + borders("state") + theme_void()
-  # labs(title = 'Year: {round(frame_time)}') +
-  # gganimate::transition_time(year)
+  coord_map() + borders("state") + theme_void() +
+  labs(title = 'Year: {round(frame_time)}') +
+  gganimate::transition_time(year)
 ```
